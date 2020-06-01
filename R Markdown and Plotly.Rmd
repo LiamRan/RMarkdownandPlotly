@@ -1,0 +1,34 @@
+---
+title: "Week 3: R Markdown Presentation and Plotly"
+author: "William Tai"
+date: "6/1/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, message = FALSE}
+library(plotly)
+library(shiny)
+```
+
+## The data sets of diamonds
+```{r}
+head(diamonds)
+```
+
+
+
+## Scatterplot of diamonds
+
+```{r, message = FALSE, warning = FALSE}
+# Select 1000 diamonds out of 53940
+diamonds_subset <- diamonds[sample(nrow(diamonds), 500),]
+
+plot_ly(data = diamonds_subset, 
+        x = ~carat, y = ~price,
+        color = ~carat, size = ~carat)
+```
+
